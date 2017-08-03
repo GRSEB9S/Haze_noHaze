@@ -1,6 +1,6 @@
 '''
 Title           :make_predictions_2.py
-Description     :This script makes predictions using the 2nd trained model and generates a prediction file.
+Description     :This script makes predictions using a pretrained model (googLeNet) and generates a prediction file.
 Author          :Ihsen Hedhli
 Date Created    :20170623
 Date Modified   :20170625
@@ -52,8 +52,8 @@ mean_array = np.asarray(mean_blob.data, dtype=np.float32).reshape(
 
 
 #Read model architecture and trained model's weights
-net = caffe.Net('/home/hedhli/EURECOM/170613_eurecom_haze_IH/Haze_NoHaze/caffe_models/caffe_model_2/caffenet_deploy_2.prototxt',
-                '/home/hedhli/EURECOM/170613_eurecom_haze_IH/Haze_NoHaze/caffe_models/caffe_model_2/caffe_model_2_iter_200.caffemodel',
+net = caffe.Net('./caffenet_deploy_2.prototxt',
+                './caffe_model_2_iter_200.caffemodel',
                 caffe.TEST)
 
 #Define image transformers
