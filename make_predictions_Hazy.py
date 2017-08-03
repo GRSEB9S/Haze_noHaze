@@ -45,7 +45,7 @@ Reading mean image, caffe model and its weights
 '''
 #Read mean image
 mean_blob = caffe_pb2.BlobProto()
-with open('/home/hedhli/EURECOM/170613_eurecom_haze_IH/Haze_NoHaze/input/mean.binaryproto') as f:
+with open('../DATA/haze_noHaze/mean.binaryproto') as f:
     mean_blob.ParseFromString(f.read())
 mean_array = np.asarray(mean_blob.data, dtype=np.float32).reshape(
     (mean_blob.channels, mean_blob.height, mean_blob.width))
