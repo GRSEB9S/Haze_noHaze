@@ -4,10 +4,9 @@ deeplearning algorithm that predict if an image contain Haze or not.
 '''
 
 Step to reproduce the code:
-______________________________________________________
-I) Learning
- 
---------------------------------------
+____________________________________________________
+I) Deep Learning
+-----------------------
 1) Data Preparation
 - We start by creating the train and test  files to your our local machine. 
 - Next, we run create_lmdb.py. don't forget to change the path to your train/test folders in create_lmdb.py file.
