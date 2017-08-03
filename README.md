@@ -63,7 +63,60 @@ A learning curve is a plot of the training and test losses as a function of the 
 ____________________________________________________
 II) Transfer Learning
 ----------------------
-  
+In this section, we will use transfer learning for building the Haze/NoHaze classifier.
+
+Caffe comes with a repository that is used by researchers and machine learning practitioners to share their trained models. This library is called Model Zoo.
+
+We will utilize the trained bvlc_reference_caffenet as a starting point of building our classifier using transfer learning. This model was trained on the ImageNet dataset which contains millions of images across 1000 categories.
+
+We will use the fine-tuning strategy for training our model. 
+
+---------------------------------------------------            
+ 1)   Data Preparation : 
+      Same as before
+ ---------------------------------------------------            
+ 2)   Generating the mean image of training data : 
+      Same as before
+ 
+ 
+ -------------------------------------------------
+ 3)  Model Definition
+ 
+  We can download the trained model by executing the command below.
+
+      cd /home/ubuntu/caffe/models/bvlc_reference_caffenet
+      wget http://dl.caffe.berkeleyvision.org/bvlc_reference_caffenet.caffemodel
+ 
+ 
+ The model and solver configuration files are stored under this repo. We need to make the following change to the original bvlc_reference_caffenet model configuration file.
+
+    Change the path for input data and mean image: Lines 24, 40 and 51.
+    Change the name of the last fully connected layer from fc8 to fc8-cats-dogs. Lines 360, 363, 387 and 397.
+    Change the number of outputs from 1000 to 2: Line 373. The original bvlc_reference_caffenet was designed for a classification problem with 1000 classes.
+
+Note that if we keep a layer's name unchanged and we pass the trained model's weights to Caffe, it will pick its weights from the trained model. If we want to freeze a layer, we need to setup its lr_mult parameter to 0.
+
+
+-------------------------------------------------
+ 4)  Solver Definition 
+      Same as Before
+ -------------------------------------------------
+ 5)  Model Training 
+ 
+ After defining the model and the solver, we can start training the model by executing the command below. Note that we can pass the trained model's weights by using the argument --weights.
+
+      /home/ubuntu/caffe/build/tools/caffe train --solver=/home/ubuntu/deeplearning-cats-dogs-tutorial/caffe_models/caffe_model_2/solver_2.prototxt --weights /home/ubuntu/caffe/models/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel 2>&1 | tee /home/ubuntu/deeplearning-cats-dogs-tutorial/caffe_models/caffe_model_2/model_2_train.log
+
+ 
+ -------------------------------------------------
+ 6)  Plotting the learning curve
+     Same as Before
+  -------------------------------------------------
+ 7)  Prediction on New Data 
+      Same as Before
+ 
+ 
+
   
   
   
