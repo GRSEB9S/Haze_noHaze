@@ -46,8 +46,8 @@ def make_datum(img, label):
         label=label,
         data=np.rollaxis(img, 2).tostring())
 
-train_lmdb = '../haze_noHaze/train_lmdb/train_lmdb'# put here the path to train lmdb file
-validation_lmdb = '../haze_noHaze/validation_lmdb/validation_lmdb'# put here the path to validation lmdb file
+train_lmdb = '../DATA/haze_noHaze/train_lmdb/train_lmdb'# put here the path to train lmdb file
+validation_lmdb = '../DATA/haze_noHaze/validation_lmdb/validation_lmdb'# put here the path to validation lmdb file
 
 os.system('rm -rf  ' + train_lmdb)
 os.system('rm -rf  ' + validation_lmdb)
