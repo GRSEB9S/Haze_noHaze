@@ -23,7 +23,7 @@ create_lmdb.py script does the following:
   
   We execute the command below to generate the mean image of training data. We will substract the mean image from each input     image to ensure every feature pixel has zero mean:
     
-      /home/ubuntu/caffe/build/tools/compute_image_mean -backend=lmdb /home/ubuntu/deeplearning-cats-dogs-tutorial/input/train_lmdb /home/ubuntu/deeplearning-cats-dogs-tutorial/input/mean.binaryproto
+      /home/hedhli/caffe/build/tools/compute_image_mean -backend=lmdb /home/hedhli/git-repo/DATA/blur_noBlur/train_lmdb /home/hedhli/git-repo/blur_NoBlur/mean.binaryproto
     
 ------------------------------------------------
 3)  Model Definition
