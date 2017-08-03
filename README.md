@@ -4,6 +4,9 @@ deeplearning algorithm that predict if an image contain Haze or not.
 '''
 
 Step to reproduce the code:
+-------------------
+I) Learning
+-------------------
 ___________________________________________
 1) Data Preparation
 - We start by creating the train and test  files to your our local machine. 
@@ -37,8 +40,29 @@ We can print the model architecture by executing the command below :
     python /home/ubuntu/caffe/python/draw_net.py /home/ubuntu/deeplearning-cats-dogs-tutorial/caffe_models/caffe_model_1/caffenet_train_val_1.prototxt /home/ubuntu/deeplearning-cats-dogs-tutorial/caffe_models/caffe_model_1/caffe_model_1.png
  
  _________________________________________________
- 4) Solver Definition
+4)   Solver Definition (responsible for model optimization.)
+
+We define the solver's parameters in a .prototxt file. You can find our solver under this repo named solver_hazy.prototxt
+
+___________________________________________________
+5)    Model Training 
+After defining the model and the solver, we can start training the model by executing the command below: 
+
+            /home/ubuntu/caffe/build/tools/caffe train --solver /home/ubuntu/deeplearning-cats-dogs-tutorial/caffe_models/caffe_model_1/solver_1.prototxt 2>&1 | tee /home/ubuntu/deeplearning-cats-dogs-tutorial/caffe_models/caffe_model_1/model_1_train.log
+
+____________________________________________________
+6)    Plotting the learning curve
+A learning curve is a plot of the training and test losses as a function of the number of iterations. These plots are very useful to visualize the train/validation losses and validation accuracy. 
+
+            python /home/ubuntu/deeplearning-cats-dogs-tutorial/caffe_models/code/plot_learning_curve.py /home/ubuntu/deeplearning-cats-dogs-tutorial/caffe_models/caffe_models/caffe_model_1/model_1_train.log /home/ubuntu/deeplearning-cats-dogs-tutorial/caffe_models/caffe_models/caffe_model_1/caffe_model_1_learning_curve.png
+            
+ 7)   Prediction on New Data : 
+            
+            python make_predictions_1.py
  
+----------------------
+II) Transfer Learning
+----------------------
   
   
   
