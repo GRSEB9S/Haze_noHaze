@@ -12,10 +12,10 @@ ___________________________________________
 
 create_lmdb.py script does the following:
 
-    (a)  Run histogram equalization on all training images. Histogram equalization is a technique for adjusting the contrast of images.
-    (b)  Resize all training images to a 227x227 format.
-    (c)  Divide the training data into 2 sets: One for training (5/6 of images) and the other for validation (1/6 of images). The training set is used to train the model, and the validation set is used to calculate the accuracy of the model.
-    (d)  Store the training and validation in 2 LMDB databases. train_lmdb for training the model and validation_lmbd for model evaluation.
+   -  Run histogram equalization on all training images. Histogram equalization is a technique for adjusting the contrast of images.
+   -  Resize all training images to a 227x227 format.
+   -  Divide the training data into 2 sets: One for training (5/6 of images) and the other for validation (1/6 of images). The training set is used to train the model, and the validation set is used to calculate the accuracy of the model.
+   -  Store the training and validation in 2 LMDB databases. train_lmdb for training the model and validation_lmbd for model evaluation.
 ______________________________________________
 2)  Generating the mean image of training data
   
@@ -29,8 +29,8 @@ After deciding on the CNN architecture, we need to define its parameters in a .p
 
 We need to make the modifications below to the original bvlc_reference_caffenet prototxt file (here caffenet_train_val_hazy.prototxt):
 
-    (a) Change the path for input data and mean image: Lines 24, 40 and 51.
-    (b) Change the number of outputs from 1000 to 2: Line 373. The original bvlc_reference_caffenet was designed for a classification problem with 1000 classes.
+  - Change the path for input data and mean image: Lines 24, 40 and 51.
+  - Change the number of outputs from 1000 to 2: Line 373. The original bvlc_reference_caffenet was designed for a classification problem with 1000 classes.
 
 We can print the model architecture by executing the command below :
 
