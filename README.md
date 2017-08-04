@@ -111,7 +111,8 @@ Note that if we keep a layer's name unchanged and we pass the trained model's we
  
  After defining the model and the solver, we can start training the model by executing the command below. Note that we can pass the trained model's weights by using the argument --weights.
 
-      /home/ubuntu/caffe/build/tools/caffe train --solver=/home/ubuntu/deeplearning-cats-dogs-tutorial/caffe_models/caffe_model_2/solver_2.prototxt --weights /home/ubuntu/caffe/models/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel 2>&1 | tee /home/ubuntu/deeplearning-cats-dogs-tutorial/caffe_models/caffe_model_2/model_2_train.log
+      /home/hedhli/caffe/build/tools/caffe train --solver /home/hedhli/git-repo/ImageDefectClassif/solver.prototxt --weights  /home/hedhli/caffe/models/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel  2>&1 | tee /home/hedhli/git-repo/ImageDefectClassif/model_train.log
+
 
  
  -------------------------------------------------
