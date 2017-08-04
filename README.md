@@ -27,6 +27,7 @@ create_lmdb.py script does the following:
     
 ------------------------------------------------
 3)  Model Definition
+
 After deciding on the CNN architecture, we need to define its parameters in a .prototxt train_val file. Caffe comes with a few popular CNN models such as Alexnet and GoogleNet. Here, we will use the bvlc_reference_caffenet model which is a replication of AlexNet with a few modifications.
 
 We need to make the modifications below to the original bvlc_reference_caffenet prototxt file (here caffenet_train_val_hazy.prototxt):
@@ -45,12 +46,14 @@ We define the solver's parameters in a .prototxt file. You can find our solver u
 
 ---------------------------------------------------
 5)    Model Training 
+
 After defining the model and the solver, we can start training the model by executing the command below: 
 
             /home/ubuntu/caffe/build/tools/caffe train --solver /home/ubuntu/deeplearning-cats-dogs-tutorial/caffe_models/caffe_model_1/solver_1.prototxt 2>&1 | tee /home/ubuntu/deeplearning-cats-dogs-tutorial/caffe_models/caffe_model_1/model_1_train.log
 
 ---------------------------------------------------
 6)    Plotting the learning curve
+
 A learning curve is a plot of the training and test losses as a function of the number of iterations. These plots are very useful to visualize the train/validation losses and validation accuracy. 
 
             python /home/ubuntu/deeplearning-cats-dogs-tutorial/caffe_models/code/plot_learning_curve.py /home/ubuntu/deeplearning-cats-dogs-tutorial/caffe_models/caffe_models/caffe_model_1/model_1_train.log /home/ubuntu/deeplearning-cats-dogs-tutorial/caffe_models/caffe_models/caffe_model_1/caffe_model_1_learning_curve.png
@@ -73,9 +76,11 @@ We will use the fine-tuning strategy for training our model.
 
 ---------------------------------------------------            
  1)   Data Preparation : 
+ 
       Same as before
  ---------------------------------------------------            
  2)   Generating the mean image of training data : 
+ 
       Same as before
  
  
@@ -90,15 +95,16 @@ We will use the fine-tuning strategy for training our model.
  
  The model and solver configuration files are stored under this repo. We need to make the following change to the original bvlc_reference_caffenet model configuration file.
 
-    Change the path for input data and mean image: Lines 24, 40 and 51.
-    Change the name of the last fully connected layer from fc8 to fc8-cats-dogs. Lines 360, 363, 387 and 397.
-    Change the number of outputs from 1000 to 2: Line 373. The original bvlc_reference_caffenet was designed for a classification problem with 1000 classes.
+- Change the path for input data and mean image: Lines 24, 40 and 51.
+- Change the name of the last fully connected layer from fc8 to fc8-cats-dogs. Lines 360, 363, 387 and 397.
+- Change the number of outputs from 1000 to 2: Line 373. The original bvlc_reference_caffenet was designed for a classification problem with 1000 classes.
 
 Note that if we keep a layer's name unchanged and we pass the trained model's weights to Caffe, it will pick its weights from the trained model. If we want to freeze a layer, we need to setup its lr_mult parameter to 0.
 
 
 -------------------------------------------------
- 4)  Solver Definition 
+ 4)  Solver Definition:
+ 
       Same as Before
  -------------------------------------------------
  5)  Model Training 
@@ -109,10 +115,12 @@ Note that if we keep a layer's name unchanged and we pass the trained model's we
 
  
  -------------------------------------------------
- 6)  Plotting the learning curve
+ 6)  Plotting the learning curve:
+ 
      Same as Before
   -------------------------------------------------
- 7)  Prediction on New Data 
+ 7)  Prediction on New Data:
+ 
       Same as Before
  
  
